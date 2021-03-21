@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body id='bg' style="background-image: url('{% static "images/Loginbackground.png" %}');">
+<link rel="stylesheet" type="text/css" href="{% static 'css/resume.css' %}">
+</body>
+
+<div class="container">
+    <h3>LogIn</h3>
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+    </form>
+</div>
+
+{% endblock %}

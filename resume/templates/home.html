@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home|Resume</title>
+
+    <h3 align="center" >Welcome to Resume Builder App.</h3>
+
+</head>
+<body>
+<div class="container">
+    <table>
+        <tr>
+            <th>S.NO</th>
+            <th>NAME</th>
+            <th>PHONE</th>
+            <th>EMAIL</th>
+            <th>SKILLS</th>
+        </tr>
+       {% for i in page_object %}
+        <tr>
+            <td>{{i.id}}</td>
+            <td><a href="/resumedetails/{{i.name}}">{{i.name}}</a></td>
+            <td>{{i.phone}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.Skills}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<br><br><br>
+<div class="container">
+    {% if page_object.has_previous %}
+
+    <a href="?page={{ page_object.previous_page_number }}">previous</a>
+
+    {% endif %}
+
+    {{page_object}}
+
+    {% if page_object.has_next %}
+
+    <a href="?page={{ page_object.next_page_number }}">next</a>
+
+    {% endif %}
+    <br>
+
+</div>
+<div class="container">
+    <a href="/forms">Click here to build your resume</a>
+</div>
+</body>
+</html>
+{% endblock %}
